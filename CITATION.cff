@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use AXIOM-X in your research, please cite it as below."
+title: "AXIOM-X: A Symbolic Physics Discovery Engine"
+version: "1.0.0"
+date-released: 2025-01-10
+authors:
+  - family-names: "Vasquez"
+    given-names: "Brandon M."
+repository-code: "https://github.com/BrandonMVasquez/axiom-x"
+keywords:
+  - symbolic physics
+  - scientific discovery
+  - evolutionary algorithms
+  - equation discovery
+  - gpu acceleration
+  - torch
+  - artificial intelligence
+license: "Apache-2.0"
+abstract: >
+  AXIOM-X is a GPU-accelerated symbolic physics discovery engine that uses
+  large-scale evolutionary search to recover governing equations from raw
+  dynamical data. It is designed for massive population-scale optimization,
+  reproducibility, and autonomous physical law extraction.
