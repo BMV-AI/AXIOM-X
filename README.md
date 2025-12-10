@@ -1,141 +1,65 @@
-# AXIOM-X v1  
-**Symbolic Physics Discovery Engine**  
-*“We do not search for truth. We extract it.”*
+AXIOM-X v1.0 is the first public release of a high-performance symbolic physics discovery engine built for evolutionary equation search and dynamical system identification.
 
-AXIOM-X is a fully reproducible, GPU-accelerated evolutionary discovery engine designed to evolve symbolic dynamical equations directly from data. It uses large-scale tournament-based evolution to recover governing equations of physical systems without assuming a model class in advance.
+This release introduces a full GPU-accelerated population-based evolutionary framework for discovering governing equations directly from time-series data.
 
-This repository contains the first public release of AXIOM-X.
+━━━━━━━━━━━━━━━━━━━━
+CORE FEATURES
+━━━━━━━━━━━━━━━━━━━━
+• Large-scale population evolution (up to 131,072 candidates)
+• GPU-accelerated evaluation via PyTorch
+• Tournament selection + elite preservation
+• Adaptive mutation scheduling
+• Full checkpointing with deterministic reproducibility
+• CPU & CUDA deterministic seeding
+• Automatic resume on interruption
+• Training + validation trajectory system
+• Real-time best-equation reporting
 
----
-
-## 🚀 What AXIOM-X Does
-
-AXIOM-X evolves equations of the form:
+━━━━━━━━━━━━━━━━━━━━
+DISCOVERY OBJECTIVE
+━━━━━━━━━━━━━━━━━━━━
+AXIOM-X searches for governing equations of the form:
 
 dx = a·mean(x) − b·x + c·tanh(d·mean(x))
 
-It automatically:
-- Generates synthetic physical trajectories
-- Evolves symbolic parameters using large-population evolution
-- Performs tournament selection and crossover
-- Applies adaptive mutation
-- Tracks best discoveries on training + validation data
-- Resumes seamlessly from checkpoints
-- Runs on CPU or CUDA GPU
-- Is bit-reproducible across runs
+by evolving parameters directly against generated physical trajectories using mean-squared trajectory error as the fitness objective.
 
-This is not a neural network.  
-This is direct equation discovery by evolution.
+━━━━━━━━━━━━━━━━━━━━
+SYSTEM DESIGN
+━━━━━━━━━━━━━━━━━━━━
+• Torch tensor evolution pipeline
+• Batched MSE evaluation
+• Tournament genetic reproduction
+• Elitism with population refresh
+• Continuous generation loop with autosave recovery
+• Signal-safe checkpointing (Ctrl+C safe)
 
----
+━━━━━━━━━━━━━━━━━━━━
+REQUIREMENTS
+━━━━━━━━━━━━━━━━━━━━
+Python 3.9+
+torch
+numpy
 
-## 🧠 Core Features
+Install with:
+pip install -r requirements.txt
 
-- Large-scale evolutionary search (131,072 agents)
-- Tournament selection + crossover
-- Adaptive mutation scheduling
-- GPU acceleration via PyTorch
-- Bit-reproducible CPU + CUDA execution
-- Automatic checkpointing + resume
-- SIGINT-safe shutdown (Ctrl+C)
-- Smoke-test CI mode for fast validation
+Run with:
+python axiom-x.py
 
----
+━━━━━━━━━━━━━━━━━━━━
+STATUS
+━━━━━━━━━━━━━━━━━━━━
+This is a v1.0 research release intended for:
+• Symbolic regression experiments
+• Dynamical system identification
+• Evolutionary physics modeling
+• AI-driven equation discovery
 
-## 📦 Installation
+Future versions will expand symbolic operator libraries, equation structure evolution, and multi-system discovery.
 
-Requires:
-
-- Python 3.9+
-- PyTorch
-- NumPy
-
-Install dependencies:
-
-pip install torch numpy
-
----
-
-## ▶️ Running AXIOM-X
-
-Standard run:
-
-python axiom_x.py
-
-Custom experiment directory:
-
-python axiom_x.py --exp-dir my_experiment
-
-Fast smoke test:
-
-python axiom_x.py --smoke-test
-
----
-
-## 💾 Checkpointing & Resume
-
-AXIOM-X automatically saves:
-
-- Population
-- Best parameters
-- RNG states (Python, NumPy, Torch, CUDA)
-- Mutation state
-
-To resume, just run again in the same directory:
-
-python axiom_x.py --exp-dir my_experiment
-
----
-
-## 🧪 What This Is For
-
-AXIOM-X is designed for:
-
-- Symbolic regression
-- Dynamical system discovery
-- Physics law discovery
-- Chaos system recovery
-- Equation search research
-- Evolutionary computation research
-
-It is not:
-- A neural network
-- A language model
-- A game engine
-
-This is a scientific discovery system.
-
----
-
-## ⚠️ Disclaimer
-
-This project is experimental research software.  
-No claims are made about correctness of discovered physics laws.  
-Use for research, education, and experimentation only.
-
----
-
-## 📜 License
-
-This project is licensed under the Apache License, Version 2.0 (Apache-2.0).
-
-You may:
-- Use it
-- Modify it
-- Distribute it
-- Use it commercially
-
-You must:
-- Include the license
-- Provide attribution
-
-This software is provided “AS IS”, without warranty.
-
----
-
-## 👤 Author
-
-Brandon M. Vasquez  
-2025  
-Independent Researcher & Systems Developer
-
+━━━━━━━━━━━━━━━━━━━━
+AUTHOR
+━━━━━━━━━━━━━━━━━━━━
+Brandon M. Vasquez
+2025
