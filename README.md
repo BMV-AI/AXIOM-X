@@ -1,65 +1,136 @@
-AXIOM-X v1.0 is the first public release of a high-performance symbolic physics discovery engine built for evolutionary equation search and dynamical system identification.
+# AXIOM-X v1.0  
+**Symbolic Physics Discovery Engine**
 
-This release introduces a full GPU-accelerated population-based evolutionary framework for discovering governing equations directly from time-series data.
+Brandon M. Vasquez (2025)
 
-━━━━━━━━━━━━━━━━━━━━
-CORE FEATURES
-━━━━━━━━━━━━━━━━━━━━
-• Large-scale population evolution (up to 131,072 candidates)
-• GPU-accelerated evaluation via PyTorch
-• Tournament selection + elite preservation
-• Adaptive mutation scheduling
-• Full checkpointing with deterministic reproducibility
-• CPU & CUDA deterministic seeding
-• Automatic resume on interruption
-• Training + validation trajectory system
-• Real-time best-equation reporting
+---
 
-━━━━━━━━━━━━━━━━━━━━
-DISCOVERY OBJECTIVE
-━━━━━━━━━━━━━━━━━━━━
-AXIOM-X searches for governing equations of the form:
+## Overview
 
+AXIOM-X is a high-performance symbolic discovery engine for identifying governing equations of dynamical systems directly from time-series data using large-scale evolutionary search.
+
+It combines GPU-accelerated evaluation, deterministic reproducibility, and population-scale optimization into a single research-grade system.
+
+---
+
+## Core Features
+
+- Population-scale evolution (up to 131,072 candidates)
+- GPU-accelerated fitness evaluation (PyTorch)
+- Tournament selection with elite preservation
+- Adaptive mutation scheduling
+- Full checkpointing with exact reproducibility
+- CPU and CUDA deterministic seeding
+- Automatic resume on interruption
+- Training and validation trajectory system
+- Real-time best-equation reporting
+
+---
+
+## Discovery Objective
+
+AXIOM-X optimizes equations of the form:
+
+```
 dx = a·mean(x) − b·x + c·tanh(d·mean(x))
+```
 
-by evolving parameters directly against generated physical trajectories using mean-squared trajectory error as the fitness objective.
+by evolving parameters directly against time-series trajectories using mean-squared error as the fitness objective.
 
-━━━━━━━━━━━━━━━━━━━━
-SYSTEM DESIGN
-━━━━━━━━━━━━━━━━━━━━
-• Torch tensor evolution pipeline
-• Batched MSE evaluation
-• Tournament genetic reproduction
-• Elitism with population refresh
-• Continuous generation loop with autosave recovery
-• Signal-safe checkpointing (Ctrl+C safe)
+---
 
-━━━━━━━━━━━━━━━━━━━━
-REQUIREMENTS
-━━━━━━━━━━━━━━━━━━━━
-Python 3.9+
-torch
-numpy
+## Architecture
 
-Install with:
+- Batched tensor evolution pipeline
+- GPU MSE evaluation
+- Tournament genetic reproduction
+- Elitism with continuous population refresh
+- Signal-safe autosave recovery
+- Full RNG state preservation (Python, NumPy, Torch, CUDA)
+
+---
+
+## Requirements
+
+- Python 3.9+
+- torch
+- numpy
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
+```
 
-Run with:
+---
+
+## Running
+
+```bash
 python axiom-x.py
+```
 
-━━━━━━━━━━━━━━━━━━━━
-STATUS
-━━━━━━━━━━━━━━━━━━━━
-This is a v1.0 research release intended for:
-• Symbolic regression experiments
-• Dynamical system identification
-• Evolutionary physics modeling
-• AI-driven equation discovery
+Optional CI smoke test:
 
-Future versions will expand symbolic operator libraries, equation structure evolution, and multi-system discovery.
+```bash
+python axiom-x.py --smoke-test
+```
 
-━━━━━━━━━━━━━━━━━━━━
-AUTHOR
-━━━━━━━━━━━━━━━━━━━━
-Brandon M. Vasquez
+Checkpoints and logs are written to:
+
+```
+axiom_x_run/
+```
+
+---
+
+## Reproducibility
+
+All runs are fully deterministic across CPU and CUDA.  
+Checkpoint state includes population tensors, fitness state, mutation schedule, and full RNG state for exact resume.
+
+---
+
+## Applications
+
+- Symbolic regression
+- Dynamical system identification
+- Equation discovery from data
+- Evolutionary physics modeling
+
+---
+
+## Status
+
+v1.0 — Public research release.
+
+---
+
+## Author
+
+Brandon M. Vasquez  
 2025
+
+---
+
+## License
+
+Apache License 2.0
+
+---
+
+## Citation
+
+See `CITATION.cff`
+
+---
+
+## Contributing
+
+See `CONTRIBUTING.md`
+
+---
+
+## Security
+
+See `SECURITY.md`
